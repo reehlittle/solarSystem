@@ -4,6 +4,7 @@ import {View} from 'react-native';
 
 import AuthTemplate from '../../components/templates/auth';
 import Carousel from '../../components/carousel';
+import Orbit from '../../components/orbit';
 
 import {I18n} from '../../utils';
 import earth from '../../resources/img/earth.png';
@@ -19,15 +20,8 @@ const Main = () => {
 
   return (
     <AuthTemplate>
-      <View style={{height: '10%'}}>
-        <View
-          style={{
-            width: 40,
-            height: 40,
-            borderRadius: 20,
-            backgroundColor: 'white',
-          }}
-        />
+      <View style={{height: '10%', alignItems:'center'}}>
+        <Orbit />
       </View>
 
       <Carousel items={items} />
