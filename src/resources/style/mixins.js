@@ -3,13 +3,20 @@ const WINDOW_WIDTH = Dimensions.get('window').width;
 const guidelineBaseWidth = 414;
 
 export const scaleSize = (size, px = true) => {
-  if (px) return (WINDOW_WIDTH / guidelineBaseWidth) * size + 'px';
+  if (px) {
+    return (WINDOW_WIDTH / guidelineBaseWidth) * size + 'px';
+  }
 
   return (WINDOW_WIDTH / guidelineBaseWidth) * size;
 };
 
-export const scaleFont = (size) =>
-  scaleSize(size, false) * PixelRatio.getFontScale();
+export const scaleFont = (size, px = true) => {
+  if (px) {
+    return scaleSize(size, false) * PixelRatio.getFontScale() + 'px';
+  }
+
+  return scaleSize(size, false) * PixelRatio.getFontScale();
+};
 
 function dimensions(
   top = 0,

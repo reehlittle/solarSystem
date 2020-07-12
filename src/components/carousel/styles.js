@@ -13,7 +13,7 @@ export const Container = styled.View`
 `;
 
 export const ItemView = styled.View`
-  width: ${itemSize};
+  width: ${itemSize + 'px'};
   height: 100%;
 `;
 
@@ -34,25 +34,25 @@ export const Headline = styled.Text`
   font-family: ${Typography.FONT_FAMILY_REGULAR};
   color: #dedede;
   font-size: ${Typography.FONT_SIZE_20};
-  letter-spacing: 5;
+  letter-spacing: 5px;
 `;
 
 export const Planet = styled.Image`
-  width: ${imgSize};
-  height: ${imgSize};
+  width: ${imgSize + 'px'};
+  height: ${imgSize + 'px'};
   resize-mode: contain;
 
   position: absolute;
-  bottom: -${dislocImg * 2};
-  left: -${dislocImg};
+  bottom: -${dislocImg * 2 + 'px'};
+  left: -${dislocImg + 'px'};
 `;
 
 export const Gradient = styled(LinearGradient)`
-  width: ${imgSize};
-  height: ${imgSize};
+  width: ${imgSize + 'px'};
+  height: ${imgSize + 'px'};
 
   position: absolute;
   position: absolute;
-  bottom: -${dislocImg * 2};
-  left: -${dislocImg};
+  bottom: -${dislocImg * 2 + 'px'};
+  left: -${dislocImg + 'px'};
 `;

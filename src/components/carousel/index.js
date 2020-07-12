@@ -25,12 +25,12 @@ const Carousel = ({items, ...rest}) => {
         snapToInterval={scrollSize}>
         {items &&
           items.map((item) => (
-            <ItemView>
+            <ItemView key={item.name}>
               <VisibleArea>
                 <Name>{item.name.toUpperCase()}</Name>
                 <Headline>{'blues for a red planet'.toUpperCase()}</Headline>
                 <Planet source={item.image} />
-                <Gradient colors={['rgba(0,0,0,0.00)', 'rgba(0,0,0,1)']} />
+                <Gradient colors={['rgba(0,0,0,0.00)', 'rgb(0,0,0)']} />
               </VisibleArea>
             </ItemView>
           ))}

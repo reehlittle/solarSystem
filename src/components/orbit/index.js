@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from 'react';
-import {Animated, Easing} from 'react-native';
+import {Animated, Easing, StyleSheet} from 'react-native';
 
-import { ExternalOrbit,MoonOrbit, Moon, Planet } from './styles';
+import {MoonOrbit, Moon, Planet} from './styles';
 
 const Orbit = () => {
   const animatedRotation = new Animated.Value(0);
@@ -9,8 +9,22 @@ const Orbit = () => {
 
   const rotateT = animatedRotationRef.current.interpolate({
     inputRange: [0, 1],
-    outputRange: ["0deg", "360deg"],
+    outputRange: ['0deg', '360deg'],
   });
+
+  const style = {
+    spinner: {
+      transform: [{rotate: rotateT}],
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      borderWidth: 1,
+      borderColor: '#6f6969',
+      borderStyle: 'solid',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  };
 
   function spin() {
     Animated.loop(
@@ -19,7 +33,7 @@ const Orbit = () => {
         duration: 3000,
         easing: Easing.linear,
         useNativeDriver: true,
-      })
+      }),
     ).start();
   }
 
@@ -30,24 +44,13 @@ const Orbit = () => {
   return (
     <>
       <Planet />
-      <Animated.View
-      style={{
-        transform: [{ rotate: rotateT }],
-        width: 50,
-        height: 50,
-        borderRadius: 25,
-        borderWidth: 1,
-        borderColor: "#6f6969",
-        borderStyle: "solid",
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+      <Animated.View style={style.spinner}>
         <MoonOrbit>
           <Moon />
         </MoonOrbit>
       </Animated.View>
     </>
   );
-}
+};
 
 export default Orbit;

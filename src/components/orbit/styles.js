@@ -10,7 +10,7 @@ export const Planet = styled.View`
   top: 30px;
 `;
 
-export const MoonOrbit = styled.View`  
+export const MoonOrbit = styled.View`
   width: 30px;
   height: 30px;
   border-radius: 15px;
@@ -25,16 +25,5 @@ export const Moon = styled.View`
   background: white;
 
   position: relative;
-  top: 3px
-`;
-
-export const ExternalOrbit = styled.View`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-
-  border: 1px solid #6f6969;
-
-  justify-content: center;
-  align-items: center;
+  top: 3px;
 `;
