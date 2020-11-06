@@ -1,26 +1,19 @@
-import React, {useEffect, useCallback} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {View} from 'react-native';
+import React, {useEffect, useCallback, useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 import AuthTemplate from '../../components/templates/auth';
 import Carousel from '../../components/carousel';
 import Orbit from '../../components/orbit';
 import Weather from '../../components/weather';
-
-// import {I18n} from '../../utils';
-import earth from '../../resources/img/earth.png';
-import mars from '../../resources/img/mars.png';
+import {Header} from './styles';
 
 import {loadInfo} from '../../store/modules/config/actions';
+import {Planets} from '../../utils';
 
 const Main = () => {
   const dispatch = useDispatch();
-  // const lanCode = useSelector((state) => state.language.code);
-  // const Dictionary = I18n[lanCode];
-  const items = [
-    {name: 'earth', image: earth, position: 'left'},
-    {name: 'mars', image: mars, position: 'right'},
-  ];
+  const [indexSelected, setSelected] = useState(0);
+  const [animation, setAnimation] = useState(0);
 
   const handleLoadInfo = useCallback(() => {
     dispatch(loadInfo());
@@ -32,13 +25,17 @@ const Main = () => {
 
   return (
     <AuthTemplate>
-      <View style={{height: '10%', alignItems: 'center'}}>
+      <Header>
         <Orbit />
-      </View>
+      </Header>
 
-      <Carousel items={items} />
+      <Carousel
+        items={Planets.PLANETS}
+        setSelected={setSelected}
+        setAnimation={setAnimation}
+      />
 
-      <Weather />
+      <Weather data={Planets.PLANETS[indexSelected]} animation={animation} />
     </AuthTemplate>
   );
 };

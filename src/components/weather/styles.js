@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import {Animated} from 'react-native';
 import {Typography} from '../../resources/style';
 
 export const Container = styled.View`
@@ -28,7 +28,7 @@ export const TempContainer = styled.View`
   padding: 5px;
 
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -48,8 +48,18 @@ export const Label = styled.Text`
   line-height: ${Typography.FONT_SIZE_20};
 `;
 
-export const Temperature = styled.Text`
+export const Temperature = styled(Animated.Text)`
   font-family: ${Typography.FONT_FAMILY_REGULAR};
   font-size: ${Typography.FONT_SIZE_46};
   color: #dedede;
+  opacity: ${(props) => props.fade};
+  transform: ${(props) => props.transform};
+`;
+
+export const VerticalBar = styled.View`
+  height: 8%;
+  width: 1px;
+  min-height: 60px;
+
+  background: #6f6969;
 `;

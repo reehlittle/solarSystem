@@ -12,7 +12,15 @@ import {
   Gradient,
 } from './styles';
 
-const Carousel = ({items, ...rest}) => {
+const Carousel = ({items, setSelected, setAnimation, ...rest}) => {
+  const handleScroll = (event) => {
+    if (event.nativeEvent.contentOffset.x % scrollSize > 350) {
+      setAnimation(event.nativeEvent.contentOffset.x / scrollSize);
+    }
+    if (event.nativeEvent.contentOffset.x % scrollSize === 0) {
+      setSelected(event.nativeEvent.contentOffset.x / scrollSize);
+    }
+  };
   return (
     <Container>
       <ScrollView
@@ -22,7 +30,8 @@ const Carousel = ({items, ...rest}) => {
         scrollEventThrottle={200}
         decelerationRate="fast"
         pagingEnabled
-        snapToInterval={scrollSize}>
+        snapToInterval={scrollSize}
+        onScroll={handleScroll}>
         {items &&
           items.map((item) => (
             <ItemView key={item.name}>
@@ -40,7 +49,7 @@ const Carousel = ({items, ...rest}) => {
 };
 
 const styles = StyleSheet.create({
-  ScrollView: {width: '300%'},
+  ScrollView: {width: '700%'},
 });
 const scrollSize = Dimensions.get('window').width * 2;
 
